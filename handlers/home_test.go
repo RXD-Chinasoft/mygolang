@@ -5,11 +5,13 @@ import (
 	"testing"
 	"net/http"
 	"net/http/httptest"
+	"github.com/RXD-Chinasoft/mygolang/version"
 )
 
 func TestHome(t *testing.T) {
 	w := httptest.NewRecorder()
-	home(w, nil)
+	// home(w, nil)
+	home(version.BuildTime, version.Commit, version.Release)
 	resp := w.Result()
 	if have, want := resp.StatusCode, http.StatusOK; have != want {
 		t.Errorf("Status code is wrong. Have: %d, want: %d.", have, want)
