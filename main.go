@@ -4,11 +4,15 @@ import (
 	"net/http"
 	"log"
 	"github.com/RXD-Chinasoft/mygolang/handlers"
+	"github.com/RXD-Chinasoft/mygolang/version"
 	"os"
 )
 
 func main() {
-	log.Print("Starting the service....")
+	log.Printf(
+		"Starting the service...\ncommit: %s, build time: %s, release: %s",
+		version.Commit, version.BuildTime, version.Release,
+	)
 	port := os.Getenv("PORT")
 	router := handlers.Router()
 	log.Print("The service is ready to listen and serve.")
